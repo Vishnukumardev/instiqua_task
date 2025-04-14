@@ -33,12 +33,12 @@ class DashboardController extends GetxController
     leaderBoardMenisList = LeaderBoardMenisListModel.empty();
     leaderBoardJuniorsList = LeaderBoardMenisListModel.empty();
     await fetchApi();
+    await Future.delayed(Duration(seconds: 2));
   }
 
   Future<void> fetchApi() async {
     isLoading = true;
     update();
-    await Future.delayed(Duration(seconds: 2));
     studentCount = await dashboardApi.fetchStudentCount();
     coachUpcomingEventList = await dashboardApi.fetchCoachUpcomingEventList();
     leaderBoardMenisList = await dashboardApi.fetchLeaderBoardMenisList();
